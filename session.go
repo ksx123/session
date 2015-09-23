@@ -308,6 +308,14 @@ func (m *Manager) Destory(ctx *macaron.Context) error {
 	return nil
 }
 
+func (m *Manager) DestorySid(sid string) error {
+	if err := m.provider.Destory(sid); err != nil {
+		return err
+	}
+	return nil
+}
+
+
 // RegenerateId regenerates a session store from old session ID to new one.
 func (m *Manager) RegenerateId(ctx *macaron.Context) (sess RawStore, err error) {
 	sid := m.sessionId()
